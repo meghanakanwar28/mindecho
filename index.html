@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MindEcho | Psychology Quotes</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins',sans-serif;
+    }
+
+    body{
+      background:#050505;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    body::before{
+      content:'';
+      position:fixed;
+      width:400px;
+      height:400px;
+      background:rgba(140,82,255,0.15);
+      filter:blur(120px);
+      top:-100px;
+      left:-100px;
+      z-index:-1;
+    }
+
+    body::after{
+      content:'';
+      position:fixed;
+      width:350px;
+      height:350px;
+      background:rgba(0,174,255,0.12);
+      filter:blur(120px);
+      bottom:-100px;
+      right:-100px;
+      z-index:-1;
+    }
+
+    nav{
+      width:90%;
+      margin:auto;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:25px 0;
+    }
+
+    nav h1{
+      font-size:30px;
+      color:#b084ff;
+    }
+
+    nav ul{
+      display:flex;
+      gap:25px;
+      list-style:none;
+    }
+
+    nav a{
+      text-decoration:none;
+      color:#d7d7d7;
+      transition:0.3s;
+    }
+
+    nav a:hover{
+      color:#ffffff;
+    }
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:20px;
+    }
+
+    .hero h2{
+      font-size:55px;
+      max-width:900px;
+      line-height:1.4;
+      margin-bottom:30px;
+      animation:fade 2s ease;
+    }
+
+    .hero p{
+      color:#bdbdbd;
+      margin-bottom:35px;
+    }
+
+    .btn{
+      padding:15px 35px;
+      border:none;
+      border-radius:14px;
+      background:#8c52ff;
+      color:white;
+      font-size:16px;
+      cursor:pointer;
+      transition:0.3s;
+      box-shadow:0 0 20px rgba(140,82,255,0.4);
+      margin-top:15px;
+    }
+
+    .btn:hover{
+      transform:translateY(-5px);
+      background:#9d6cff;
+    }
+
+    .dropdown{
+      padding:15px 25px;
+      border:none;
+      border-radius:14px;
+      background:#111;
+      color:white;
+      font-size:16px;
+      margin-bottom:20px;
+      outline:none;
+      cursor:pointer;
+    }
+
+    section{
+      width:90%;
+      margin:auto;
+      padding:100px 0;
+    }
+
+    .section-title{
+      text-align:center;
+      font-size:42px;
+      margin-bottom:50px;
+    }
+
+    .categories{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:25px;
+    }
+
+    .card{
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.08);
+      padding:40px 25px;
+      border-radius:25px;
+      text-align:center;
+      backdrop-filter:blur(12px);
+      transition:0.4s;
+      animation:float 3s infinite ease-in-out;
+    }
+
+    .card:hover{
+      transform:translateY(-10px) scale(1.02);
+      box-shadow:0 0 25px rgba(140,82,255,0.25);
+    }
+
+    .card h3{
+      margin-bottom:15px;
+      color:#b084ff;
+    }
+
+    .card p{
+      color:#bfbfbf;
+      font-size:14px;
+      line-height:1.6;
+    }
+
+    .favorites{
+      margin-top:50px;
+      text-align:center;
+    }
+
+    #savedQuotes{
+      margin-top:25px;
+      color:#d5d5d5;
+      line-height:1.8;
+      max-width:700px;
+    }
+
+    .about{
+      max-width:850px;
+      margin:auto;
+      text-align:center;
+      line-height:1.9;
+      color:#cfcfcf;
+      font-size:18px;
+    }
+
+    footer{
+      text-align:center;
+      padding:40px;
+      border-top:1px solid rgba(255,255,255,0.08);
+      color:#8d8d8d;
+    }
+
+    @keyframes fade{
+      from{
+        opacity:0;
+        transform:translateY(20px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    @keyframes float{
+      0%{
+        transform:translateY(0px);
+      }
+      50%{
+        transform:translateY(-8px);
+      }
+      100%{
+        transform:translateY(0px);
+      }
+    }
+
+    @media(max-width:768px){
+
+      .hero h2{
+        font-size:34px;
+      }
+
+      nav{
+        flex-direction:column;
+        gap:15px;
+      }
+
+      nav ul{
+        gap:15px;
+        flex-wrap:wrap;
+        justify-content:center;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <nav>
+
+    <h1>MindEcho</h1>
+
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#categories">Categories</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+
+  </nav>
+
+  <!-- HERO SECTION -->
+
+  <section class="hero" id="home">
+
+    <h2 id="quote">
+      “People ignore feelings until feelings become behavior.”
+    </h2>
+
+    <p>
+      Daily psychology quotes for emotions,
+      mindset, and self-understanding.
+    </p>
+
+    <!-- CATEGORY DROPDOWN -->
+
+    <select id="categorySelect" class="dropdown">
+
+      <option value="all">All Quotes</option>
+      <option value="motivation">Motivation</option>
+      <option value="love">Love Psychology</option>
+      <option value="overthinking">Overthinking</option>
+      <option value="growth">Self-Growth</option>
+
+    </select>
+
+    <!-- BUTTONS -->
+
+    <button class="btn" onclick="newQuote()">
+      New Quote
+    </button>
+
+    <button class="btn" onclick="playMusic()">
+      Play Music
+    </button>
+
+    <!-- FAVORITES -->
+
+    <div class="favorites">
+
+      <button class="btn" onclick="saveQuote()">
+        Save Favorite
+      </button>
+
+      <div id="savedQuotes"></div>
+
+    </div>
+
+  </section>
+
+  <!-- CATEGORIES -->
+
+  <section id="categories">
+
+    <h2 class="section-title">Categories</h2>
+
+    <div class="categories">
+
+      <div class="card">
+        <h3>Motivation</h3>
+        <p>
+          Quotes that inspire growth,
+          discipline, and confidence.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Human Behavior</h3>
+        <p>
+          Understand patterns, emotions,
+          and psychology of people.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Love Psychology</h3>
+        <p>
+          Emotional attachment, attraction,
+          and relationship insights.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Overthinking</h3>
+        <p>
+          Thoughts about anxiety,
+          fear, and mental pressure.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Self-Growth</h3>
+        <p>
+          Healing, confidence,
+          mindset, and mental strength.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Emotions</h3>
+        <p>
+          Deep emotional quotes that
+          connect with real feelings.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ABOUT -->
+
+  <section id="about">
+
+    <h2 class="section-title">
+      About MindEcho
+    </h2>
+
+    <div class="about">
+
+      <p>
+        This website shares psychology-inspired
+        thoughts, emotions, and mindset quotes
+        designed to help people understand
+        themselves better.
+      </p>
+
+    </div>
+
+  </section>
+
+  <!-- AUDIO -->
+
+  <audio id="bgMusic" loop>
+    <source src="music.mp3" type="audio/mp3">
+  </audio>
+
+  <!-- FOOTER -->
+
+  <footer>
+    © 2026 MindEcho | Psychology Quotes Website
+  </footer>
+
+  <!-- JAVASCRIPT -->
+
+  <script>
+
+    const quotes = [
+
+      {
+        text:"Your mind believes what you repeat.",
+        category:"motivation"
+      },
+
+      {
+        text:"Attachment changes behavior more than words do.",
+        category:"love"
+      },
+
+      {
+        text:"Overthinking is fear searching for certainty.",
+        category:"overthinking"
+      },
+
+      {
+        text:"Healing also means unlearning survival habits.",
+        category:"growth"
+      },
+
+      {
+        text:"Confidence is built through repeated courage.",
+        category:"motivation"
+      },
+
+      {
+        text:"The brain protects what the heart cannot heal.",
+        category:"love"
+      }
+
+    ];
+
+    let saved = [];
+
+    // NEW QUOTE FUNCTION
+
+    function newQuote(){
+
+      const selected =
+      document.getElementById("categorySelect").value;
+
+      let filteredQuotes;
+
+      if(selected === "all"){
+
+        filteredQuotes = quotes;
+
+      } else {
+
+        filteredQuotes = quotes.filter(
+          quote => quote.category === selected
+        );
+
+      }
+
+      const random =
+      Math.floor(Math.random() * filteredQuotes.length);
+
+      document.getElementById("quote").innerText =
+      "“" + filteredQuotes[random].text + "”";
+    }
+
+    // SAVE FAVORITE FUNCTION
+
+    function saveQuote(){
+
+      const current =
+      document.getElementById("quote").innerText;
+
+      if(!saved.includes(current)){
+
+        saved.push(current);
+
+        document.getElementById("savedQuotes").innerHTML =
+        saved.map(q => `<p>${q}</p>`).join('');
+      }
+    }
+
+    // PLAY MUSIC FUNCTION
+
+    function playMusic(){
+
+      const music =
+      document.getElementById("bgMusic");
+
+      music.play();
+    }
+
+  </script>
+
+</body>
+</html>
